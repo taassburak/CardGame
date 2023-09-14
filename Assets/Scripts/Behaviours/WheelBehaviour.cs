@@ -28,10 +28,10 @@ namespace Script.Behaviours
 
                 if (_slots[randomIndex].GetRewardType() != WheelRewardType.Bomb)
                 {
-                    BackPack.Instance.AddItem(_slots[randomIndex]);
+                    BackPack.Instance.AddItemToTempBackPack(_slots[randomIndex]);
                     for (int i = 0; i < BackPack.Instance.GetItems().Count; i++)
                     {
-                        Debug.Log($"item: {BackPack.Instance.GetItems()[i].WheelRewardType} Quantity: {BackPack.Instance.GetItems()[i].Quantity}");
+                        Debug.Log($"item: {BackPack.Instance.GetItems()[i].WheelRewardType} Quantity: {BackPack.Instance.GetItems()[i].TemporaryQuantity}");
                     }
                 }
                 else
