@@ -3,6 +3,7 @@ using UnityEngine;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
+using System;
 
 namespace Script.Behaviours
 {
@@ -13,10 +14,11 @@ namespace Script.Behaviours
         [SerializeField] private List<WheelItem> _slots;
 
         [Button]
-        public void StartRotateWheel()
+        public void StartRotateWheel(Action onCompleteAction)
         {
             //BackPack.Initialize();
-            var randomIndex = Random.Range(0, 8);
+            transform.localEulerAngles = new Vector3(0, 0, 0);
+            var randomIndex = UnityEngine.Random.Range(0, 8);
 
             var pieceAngleValue = 360 / 8;
 
@@ -39,6 +41,8 @@ namespace Script.Behaviours
                     BackPack.Instance.ClearItems();
                 }
 
+                onCompleteAction?.Invoke();
+
             });
         }
 
@@ -52,7 +56,7 @@ namespace Script.Behaviours
                 var prizeType = _wheelDatas.WheelDataContainers.WheelDatas[i].WheelItemDataContainer.WheelRewardType;
                 _slots[i].PopulateItem(_wheelDatas.WheelDataContainers.WheelDatas[i],sprite, prizeType);
             }
-            var randomBombIndex = Random.Range(0, 8);
+            var randomBombIndex = UnityEngine.Random.Range(0, 8);
             var bombSprite = _wheelDatas.BombItem.WheelItemDataContainer.Texture;
             var bombPrizeType = _wheelDatas.BombItem.WheelItemDataContainer.WheelRewardType;
             _slots[randomBombIndex].PopulateItem(_wheelDatas.WheelDataContainers.WheelDatas[randomBombIndex], bombSprite, bombPrizeType);
