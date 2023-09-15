@@ -30,4 +30,13 @@ public static class ProjectData
             PlayerPrefs.SetString("GainedCaseReward", value);
         }
     }
+
+    public static int ZoneId
+    {
+        get => PlayerPrefs.GetInt("ZoneId", 1);
+        set
+        {
+            PlayerPrefs.SetInt("ZoneId", value);
+        }
+    }
 }
