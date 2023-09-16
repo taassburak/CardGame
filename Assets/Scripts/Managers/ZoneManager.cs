@@ -9,15 +9,12 @@ public class ZoneManager : MonoBehaviour
     public event Action OnZoneReset;
     public void Initialize()
     {
-        OnZoneCompleted += ZoneCompleted;
         OnZoneReset += ZoneReset;
     }
 
     private void ZoneCompleted()
     {
-        OnZoneCompleted -= ZoneCompleted;
         ProjectData.CurrentZoneIndex++;
-        OnZoneCompleted += ZoneCompleted;
     }
 
     private void ZoneReset()
@@ -29,6 +26,7 @@ public class ZoneManager : MonoBehaviour
 
     public void InvokeZoneCompleted()
     {
+        ZoneCompleted();
         OnZoneCompleted?.Invoke();
     }
 
