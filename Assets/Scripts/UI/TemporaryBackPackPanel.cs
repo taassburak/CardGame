@@ -11,6 +11,7 @@ public class TemporaryBackPackPanel : MonoBehaviour
     private UiManager _uiManager;
 
     [SerializeField] private List<BackPackPanelItem> _backPackPanelItems;
+    [SerializeField] private GameObject _parent;
 
     public void Initialize(UiManager uiManager)
     {
@@ -19,13 +20,15 @@ public class TemporaryBackPackPanel : MonoBehaviour
 
     public void ShowPanel()
     {
-        gameObject.SetActive(true);
+        _parent.SetActive(true);
+        //gameObject.SetActive(true);
         PopulatePanel();
     }
 
     public void HidePanel()
     {
-        gameObject.SetActive(false);
+        _parent.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     [Button]

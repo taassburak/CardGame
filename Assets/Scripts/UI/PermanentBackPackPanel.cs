@@ -13,6 +13,8 @@ public class PermanentBackPackPanel : MonoBehaviour
 
     [SerializeField] private List<BackPackPanelItem> _backPackPanelItems;
 
+    [SerializeField] private GameObject _parent;
+
     public void Initialize(UiManager uiManager)
     {
         _uiManager = uiManager;
@@ -21,13 +23,15 @@ public class PermanentBackPackPanel : MonoBehaviour
 
     public void ShowPanel()
     {
-        gameObject.SetActive(true);
+        _parent.SetActive(true);
+        //gameObject.SetActive(true);
         PopulatePanel();
     }
 
     public void HidePanel()
     {
-        gameObject.SetActive(false);
+        _parent.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     

@@ -18,6 +18,8 @@ public class BackPackPanel : MonoBehaviour
 
     public void ShowPanel(bool isTmpBackPackPanel)
     {
+        _temporarayBackPackPanel.HidePanel();
+        _permanentBackPackPanel.HidePanel();
         if (isTmpBackPackPanel)
         {
             _temporarayBackPackPanel.ShowPanel();
