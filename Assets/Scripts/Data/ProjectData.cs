@@ -6,7 +6,7 @@ public static class ProjectData
 {
     public static int CurrentZoneIndex
     {
-        get => PlayerPrefs.GetInt("CurrentZoneIndex", 0);
+        get => PlayerPrefs.GetInt("CurrentZoneIndex", 1);
         set
         {
             PlayerPrefs.SetInt("CurrentZoneIndex", value);
