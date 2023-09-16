@@ -5,6 +5,13 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using System;
 
+public enum WheelType
+{
+    Bronze,
+    Silver,
+    Gold
+}
+
 namespace Script.Behaviours
 {
 
@@ -12,9 +19,16 @@ namespace Script.Behaviours
     {
         [SerializeField] private WheelDatas _wheelDatas;
         [SerializeField] private List<WheelItem> _slots;
+        [SerializeField] private WheelType _wheelType;
+        private UiManager _uiManager;
+        public void Initialize(UiManager uiManager)
+        {
+            _uiManager = uiManager;
+            PopulateSlots();
+        }
 
         [Button]
-        public void StartRotateWheel(Action onCompleteAction)
+        public void StartRotateWheel(Action onCompleteActionSuccess, Action onCompleteActionFail)
         {
             //BackPack.Initialize();
             transform.localEulerAngles = new Vector3(0, 0, 0);
@@ -35,14 +49,17 @@ namespace Script.Behaviours
                     {
                         Debug.Log($"item: {BackPack.Instance.GetItems()[i].WheelRewardType} Quantity: {BackPack.Instance.GetItems()[i].TemporaryQuantity}");
                     }
+
+                    onCompleteActionSuccess?.Invoke();
+
                 }
                 else
                 {
                     BackPack.Instance.ClearItems();
+                    onCompleteActionFail?.Invoke();
                 }
 
-                onCompleteAction?.Invoke();
-
+                _uiManager.WheelPanel.SetButtons(true);
             });
         }
 
@@ -54,12 +71,16 @@ namespace Script.Behaviours
             {
                 var sprite = _wheelDatas.WheelDataContainers.WheelDatas[i].WheelItemDataContainer.Texture;
                 var prizeType = _wheelDatas.WheelDataContainers.WheelDatas[i].WheelItemDataContainer.WheelRewardType;
-                _slots[i].PopulateItem(_wheelDatas.WheelDataContainers.WheelDatas[i],sprite, prizeType);
+                _slots[i].PopulateItem(_wheelDatas.WheelDataContainers.WheelDatas[i], sprite, prizeType);
             }
-            var randomBombIndex = UnityEngine.Random.Range(0, 8);
-            var bombSprite = _wheelDatas.BombItem.WheelItemDataContainer.Texture;
-            var bombPrizeType = _wheelDatas.BombItem.WheelItemDataContainer.WheelRewardType;
-            _slots[randomBombIndex].PopulateItem(_wheelDatas.WheelDataContainers.WheelDatas[randomBombIndex], bombSprite, bombPrizeType);
+            if (_wheelType == WheelType.Bronze)
+            {
+                var randomBombIndex = UnityEngine.Random.Range(0, 8);
+                var bombSprite = _wheelDatas.BombItem.WheelItemDataContainer.Texture;
+                var bombPrizeType = _wheelDatas.BombItem.WheelItemDataContainer.WheelRewardType;
+                _slots[randomBombIndex].PopulateItem(_wheelDatas.WheelDataContainers.WheelDatas[randomBombIndex], bombSprite, bombPrizeType);
+            }
         }
+
     }
 }
