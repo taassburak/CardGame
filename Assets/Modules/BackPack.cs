@@ -1,11 +1,5 @@
-using DG.Tweening.Core.Easing;
-using Sirenix.OdinInspector;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.RestService;
 using UnityEngine;
 
 [Serializable]
@@ -83,6 +77,7 @@ public class BackPack
         for (int i = 0; i < _backPackConfig.BackPackItemDatasContainer.BackPackItemDatas.Count; i++)
         {
             _backPackConfig.BackPackItemDatasContainer.BackPackItemDatas[i].TemporaryQuantity = 0;
+            _backPackItemDatasContainer.BackPackItemDatas[i].TemporaryQuantity = 0;
         }
 
         SaveBackPack();
