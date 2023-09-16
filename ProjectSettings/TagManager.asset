@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: InGamePanel
+    uniqueID: 2318948319
+    locked: 0
+  - name: WheelPanel
+    uniqueID: 543875403
+    locked: 0
+  - name: BackPackPanel
+    uniqueID: 2502120519
+    locked: 0
