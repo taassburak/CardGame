@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public WheelController WheelController => _wheelController;
     public ZoneManager ZoneManager => _zoneManager;
     public BackPackConfig BackPackConfig => _backPackConfig;
     [SerializeField] private UiManager _uiManager;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     {
         BackPack.Initialize();
         BackPack.Instance.SoftInitialize(this);
+        _zoneManager.Initialize();
         _uiManager.Initialize(this);
         _wheelController.Initialize(this);
     }
@@ -26,9 +28,10 @@ public class GameManager : MonoBehaviour
         
     }
 
-    [Button]
-    private void SaveBackPackTest()
+    [Button] //for button
+    public void SaveBackPack()
     {
         BackPack.Instance.AddItemToPermanentBackPack();
+        _zoneManager.InvokeZoneReset();
     }
 }
