@@ -15,16 +15,23 @@ MonoBehaviour:
   BackPackItemDatasContainer:
     BackPackItemDatas:
     - WheelRewardType: 0
-      Quantity: 0
+      TemporaryQuantity: 0
+      PermanentQuantity: 0
     - WheelRewardType: 1
-      Quantity: 0
+      TemporaryQuantity: 0
+      PermanentQuantity: 0
     - WheelRewardType: 2
-      Quantity: 0
+      TemporaryQuantity: 0
+      PermanentQuantity: 0
     - WheelRewardType: 3
-      Quantity: 0
+      TemporaryQuantity: 0
+      PermanentQuantity: 0
     - WheelRewardType: 4
-      Quantity: 0
+      TemporaryQuantity: 0
+      PermanentQuantity: 0
     - WheelRewardType: 5
-      Quantity: 0
+      TemporaryQuantity: 0
+      PermanentQuantity: 0
     - WheelRewardType: 6
-      Quantity: 0
+      TemporaryQuantity: 0
+      PermanentQuantity: 0
